@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>(주)핀스정보기술 IS개발팀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">IS개발팀</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="span12">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>사이트 이동 네비게이션</legend>
+                    <label class="control-label" for="site">사이트 목록</label>
+                    <div class="controls">
+                        <select id="site" data-bind="options: sites,
+                                                     optionsCaption: '선택...',
+                                                     optionsText: 'name',
+                                                     value: chosenSite">
+                        </select>
+                        <button class="btn btn-primary" data-bind="enable: chosenSite, click: goSite">
+                            <i class="icon-chevron-right icon-white"></i>이동
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="thumbnails">
+        <li class="span4" data-bind="visible: chosenSite, with: chosenSite">
+            <div class="alert-success thumbnail">
+                <p>
+                    <span class="label label-info">사이트명</span>
+                    <span data-bind="text: name"></span>
+                </p>
+                <p>
+                    <span class="label label-info">주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소</span>
+                    <span data-bind="text: uri"></span>
+                </p>
+            </div>
+        </li>
+        <li class="span8" data-bind="visible: chosenSite, with: chosenSite">
+            <div class="alert-info thumbnail">
+                <p>
+                    <span class="label">정보</span>
+                    <span data-bind="text: info"></span>
+                </p>
+            </div>
+        </li>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; (주)핀스정보기술 IS개발팀 2012</p>
+    </footer>
+
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/knockout-2.0.0.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    <!--
+        function SiteViewModel() {
+            this.sites = [
+                { name: "버전관리", uri: "http://210.183.165.18/csvn",
+                  info: "Subversion을 관리하는 웹 UI와 Subversion으로 구성되어 있습니다." },
+                { name: "메이븐 저장소", uri: "http://210.183.165.18/nexus",
+                  info: "Maven의 사내 저장소 역할을 하는 서버입니다."},
+                { name: "이슈관리", uri: "http://210.183.165.18/jira",
+                  info: "atlassian에서 만든 이슈관리 시스템인 지라(jira) 서버입니다."},
+                { name: "위키", uri: "http://210.183.165.18/confluence",
+                  info: "atlassian에서 만든 위키 시스템인 컨플루언스(confluence) 서버입니다."}
+            ];
+            this.chosenSite = ko.observable();
+            this.goSite = function() { location.href = this.chosenSite().uri };
+        }
+        ko.applyBindings(new SiteViewModel());
+    //-->
+    </script>
+
+
+</div> <!-- /container -->
+</body>
+</html>
